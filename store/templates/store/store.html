@@ -2,35 +2,18 @@
 {% load static %}
 {% block content %}
     <div class="row">
-        <div class="col-lg-4">
-            <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
-            <div class="box-element product">
-                <h6><strong>Product</strong></h6>
-                <hr>
-                <button  class="btn btn-outline-secondary add-btn">Add to cart</button>
-                <a class="btn btn-outline-success" href="#">View</a>
-                <h4 style="display: inline-block; float:right">₹2000</h4>
+        {% for product in products %}
+            <div class="col-lg-4">
+                <img class="thumbnail" src="{{ product.imageURL }}">
+                <div class="box-element product">
+                    <h6><strong>{{ product.name }}</strong></h6>
+                    <hr>
+                    <button class="btn btn-outline-secondary add-btn">Add to cart</button>
+                    <a class="btn btn-outline-success" href="#">View</a>
+                    <h4 style="display: inline-block; float:right">₹{{ product.price | floatformat:0 }}</h4>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-4">
-            <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
-            <div class="box-element product">
-                <h6><strong>Product</strong></h6>
-                <hr>
-                <button  class="btn btn-outline-secondary add-btn">Add to cart</button>
-                <a class="btn btn-outline-success" href="#">View</a>
-                <h4 style="display: inline-block; float:right">₹1500</h4>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
-            <div class="box-element product">
-                <h6><strong>Product</strong></h6>
-                <hr>
-                <button  class="btn btn-outline-secondary add-btn">Add to cart</button>
-                <a class="btn btn-outline-success" href="#">View</a>
-                <h4 style="display: inline-block; float:right">₹999</h4>
-            </div>
-        </div>
+        {% endfor %}
+
     </div>
 {% endblock content %}
