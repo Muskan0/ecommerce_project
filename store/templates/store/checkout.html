@@ -41,18 +41,20 @@
         </div>
         <div class="col-lg-6">
             <div class="box-element">
-                <a class="btn btn-outline-dark" href="{%  url 'cart' %}">&#x2190; Back to Cart</a>
+                <a class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
                 <hr>
                 <h3>Order Summary</h3>
                 <hr>
-                <div claSS="cart-row">
-                    <div style="flex:2"><img class="row-image" src="{% static 'images/placeholder.png' %}"></div>
-                    <div style="flex:2"><p>Product 1</p></div>
-                    <div style="flex:1"><p>₹1500</p></div>
-                    <div style="flex:1"><p>x2</p></div>
-                </div>
-                <h5>Items: 2</h5>
-                <h5>Total: ₹3000</h5>
+                {% for item in items %}
+                    <div claSS="cart-row">
+                        <div style="flex:2"><img class="row-image" src="{{ item.product.imageURL }}"></div>
+                        <div style="flex:2"><p>{{ item.product.name }}</p></div>
+                        <div style="flex:1"><p>₹{{ item.product.price| floatformat:0 }}</p></div>
+                        <div style="flex:1"><p>x{{ item.quantity }}</p></div>
+                    </div>
+                {% endfor %}
+                <h5>Items: {{ order.get_cart_items }}</h5>
+                <h5>Total: ₹{{ order.get_cart_total| floatformat:0 }}</h5>
             </div>
         </div>
     </div>
