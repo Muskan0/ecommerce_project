@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: jaraco.classes
+Version: 3.1.0
+Summary: Utility functions for Python class constructs
+Home-page: https://github.com/jaraco/jaraco.classes
+Author: Jason R. Coombs
+Author-email: jaraco@jaraco.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.6
+Requires-Dist: more-itertools
+Provides-Extra: docs
+Requires-Dist: sphinx ; extra == 'docs'
+Requires-Dist: jaraco.packaging (>=3.2) ; extra == 'docs'
+Requires-Dist: rst.linker (>=1.9) ; extra == 'docs'
+Provides-Extra: testing
+Requires-Dist: pytest (!=3.7.3,>=3.5) ; extra == 'testing'
+Requires-Dist: pytest-checkdocs (>=1.2.3) ; extra == 'testing'
+Requires-Dist: pytest-flake8 ; extra == 'testing'
+Requires-Dist: pytest-black-multipy ; extra == 'testing'
+Requires-Dist: pytest-cov ; extra == 'testing'
+
+.. image:: https://img.shields.io/pypi/v/jaraco.classes.svg
+   :target: https://pypi.org/project/jaraco.classes
+
+.. image:: https://img.shields.io/pypi/pyversions/jaraco.classes.svg
+
+.. image:: https://img.shields.io/travis/jaraco/jaraco.classes/master.svg
+   :target: https://travis-ci.org/jaraco/jaraco.classes
+
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :target: https://github.com/psf/black
+   :alt: Code style: Black
+
+.. .. image:: https://img.shields.io/appveyor/ci/jaraco/skeleton/master.svg
+..    :target: https://ci.appveyor.com/project/jaraco/skeleton/branch/master
+
+.. .. image:: https://readthedocs.org/projects/skeleton/badge/?version=latest
+..    :target: https://skeleton.readthedocs.io/en/latest/?badge=latest
+
+
