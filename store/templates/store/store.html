@@ -4,14 +4,15 @@
     <div class="row">
         {% for product in products %}
             <div class="col-lg-4">
-                <img class="thumbnail" src="{{ product.imageURL }}">
+                <img class="thumbnail" alt="{{ product.name }}" src="{{ product.imageURL }}">
+
                 <div class="box-element product">
                     <h6><strong>{{ product.name }}</strong></h6>
                     <hr>
                     <button data-product={{ product.id }} data-action="add"
                             class="btn btn-outline-secondary add-btn update-cart">Add to cart
                     </button>
-                    <a class="btn btn-outline-success" href="#">View</a>
+                    <!--<button class="btn btn-outline-success" id="myBtn">View</button>-->
                     <h4 style="display: inline-block; float:right">₹{{ product.price | floatformat:0 }}</h4>
                 </div>
             </div>

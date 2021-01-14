@@ -14,31 +14,41 @@ from django.contrib.auth import authenticate, login, logout
 def registerPage(request):
     if request.user.is_authenticated:
         return redirect('store')
-    form = CreateUserForm()
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request, "Account was created for " + user)
-            return redirect('login')
-    context = {'form': form}
-    return render(request, 'store/register.html', context)
+    else:
+        form = CreateUserForm()
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                user = form.save()
+                username = form.cleaned_data.get('username')
+                email = form.cleaned_data.get('email')
+                Customer.objects.create(
+                    user=user,
+                    name=username,
+                    email=email,
+                )
+                messages.success(request, "Account was created for " + username)
+                return redirect('login')
+        context = {'form': form}
+        return render(request, 'store/register.html', context)
 
 
 def loginPage(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('store')
-        else:
-            messages.info(request, 'Invalid Username or Password')
+    if request.user.is_authenticated:
+        return redirect('store')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('store')
+            else:
+                messages.info(request, 'Invalid Username or Password')
 
-    context = {}
-    return render(request, 'store/login.html', context)
+        context = {}
+        return render(request, 'store/login.html', context)
 
 
 def logoutUser(request):
